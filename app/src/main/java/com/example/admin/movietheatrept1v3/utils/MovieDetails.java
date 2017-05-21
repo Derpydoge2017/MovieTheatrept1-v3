@@ -15,6 +15,10 @@ public class MovieDetails {
     private String movieOverview;
     private String moviePosterPath;
 
+    private String movieTitle;
+    private String movieReleaseDate;
+    private String movieRate;
+
     public String getMovieId() {
         return movieId;
     }
@@ -37,6 +41,30 @@ public class MovieDetails {
 
     public void setMoviePosterPath(String poster_path) {
         this.moviePosterPath = poster_path;
+    }
+
+    public String getTitle() {
+        return movieTitle;
+    }
+
+    public void setMovieTitle(String title) {
+        this.movieTitle = title;
+    }
+
+    public String getMovieReleaseDate() {
+        return movieReleaseDate;
+    }
+
+    public void setMovieReleaseDate(String releaseDate) {
+        this.movieReleaseDate = releaseDate;
+    }
+
+    public String getMovieRate() {
+        return movieRate;
+    }
+
+    public void setMovieRate(String rate) {
+        this.movieRate = rate;
     }
 
 }
