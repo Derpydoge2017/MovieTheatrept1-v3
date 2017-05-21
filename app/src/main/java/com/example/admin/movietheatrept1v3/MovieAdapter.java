@@ -37,15 +37,17 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
         void onClick(String movieForDay);
     }
 
-    // COMPLETED (4) Add a MovieAdapterOnClickHandler as a parameter to the constructor and store it in mClickHandler
     /**
      * Creates a MovieAdapter.
      *
      * @param clickHandler The on-click handler for this adapter. This single handler is called
      *                     when an item is clicked.
      */
-    public MovieAdapter(MovieAdapterOnClickHandler clickHandler) {
-        mClickHandler = clickHandler;
+    private  Context context;
+
+    public MovieAdapter(Context clickHandler, MovieAdapterOnClickHandler movieAdapterOnClickHandler) {
+        context = clickHandler;
+        mClickHandler = movieAdapterOnClickHandler;
     }
 
     public class MovieAdapterViewHolder extends RecyclerView.ViewHolder implements OnClickListener {
@@ -74,6 +76,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
             MovieDetails movieDetails = (MovieDetails) mMovieData.get(adapterPosition);
             String position = movieDetails.getMovieId();
             mClickHandler.onClick(position);
+
         }
     }
 
@@ -98,6 +101,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
         View view = inflater.inflate(layoutIdForListItem, viewGroup, shouldAttachToParentImmediately);
         return new MovieAdapterViewHolder(view);
     }
+
+
 
     /**
      * OnBindViewHolder is called by the RecyclerView to display the data at the specified
