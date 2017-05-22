@@ -125,10 +125,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
         String rate = movieDetails.getMovieRate();
         String posterPath = movieDetails.getMoviePosterPath();
         String completedPosterPath = basePictureURL + posterPath;
+
         Picasso.with(context).load(completedPosterPath).into(movieAdapterViewHolder.mMoviePosterView);
         movieAdapterViewHolder.mMovieTitle.setText(title);
         movieAdapterViewHolder.mMovieReleaseDate.setText(releaseDate);
         movieAdapterViewHolder.mMovieRate.setText(rate);
+
     }
 
     /**
