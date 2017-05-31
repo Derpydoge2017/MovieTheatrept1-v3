@@ -1,6 +1,9 @@
 package com.example.admin.movietheatrept1v3.utils;
 
+
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.example.admin.movietheatrept1v3.MainActivity;
 
@@ -9,7 +12,7 @@ import com.example.admin.movietheatrept1v3.MainActivity;
  * Created by Admin on 20-May-17.
  */
 
-public class MovieDetails {
+public class MovieDetails implements Parcelable {
 
     private String movieId;
     private String movieOverview;
@@ -18,6 +21,10 @@ public class MovieDetails {
     private String movieTitle;
     private String movieReleaseDate;
     private String movieRate;
+
+    public MovieDetails() {
+
+    }
 
     public String getMovieId() {
         return movieId;
@@ -67,4 +74,41 @@ public class MovieDetails {
         this.movieRate = rate;
     }
 
+
+    protected MovieDetails(Parcel in) {
+        movieId = in.readString();
+        movieOverview = in.readString();
+        moviePosterPath = in.readString();
+        movieTitle = in.readString();
+        movieReleaseDate = in.readString();
+        movieRate = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(movieId);
+        dest.writeString(movieOverview);
+        dest.writeString(moviePosterPath);
+        dest.writeString(movieTitle);
+        dest.writeString(movieReleaseDate);
+        dest.writeString(movieRate);
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<MovieDetails> CREATOR = new Parcelable.Creator<MovieDetails>() {
+        @Override
+        public MovieDetails createFromParcel(Parcel in) {
+            return new MovieDetails(in);
+        }
+
+        @Override
+        public MovieDetails[] newArray(int size) {
+            return new MovieDetails[size];
+        }
+    };
 }
