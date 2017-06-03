@@ -24,6 +24,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
 
     private ArrayList mMovieData;
 
+    private int mCount;
+
     /*
      * An on-click handler that we've defined to make it easy for an Activity to interface with
      * our RecyclerView
@@ -45,9 +47,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
      */
     private  Context context;
 
-    public MovieAdapter(Context clickHandler, MovieAdapterOnClickHandler movieAdapterOnClickHandler) {
+    public MovieAdapter(Context clickHandler, MovieAdapterOnClickHandler movieAdapterOnClickHandler, int count) {
         context = clickHandler;
         mClickHandler = movieAdapterOnClickHandler;
+        mCount = count;
     }
 
     public class MovieAdapterViewHolder extends RecyclerView.ViewHolder implements OnClickListener {
@@ -141,7 +144,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
      */
     @Override
     public int getItemCount() {
-        if (null == mMovieData) return 0;
+        if (null == mMovieData) return mCount;
         return mMovieData.size();
     }
 
