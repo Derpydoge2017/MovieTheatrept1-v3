@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.admin.movietheatrept1v3.utils.MovieDetails;
@@ -47,10 +49,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
      */
     private  Context context;
 
-    public MovieAdapter(Context clickHandler, MovieAdapterOnClickHandler movieAdapterOnClickHandler, int count) {
+    public MovieAdapter(Context clickHandler, MovieAdapterOnClickHandler movieAdapterOnClickHandler) {
         context = clickHandler;
         mClickHandler = movieAdapterOnClickHandler;
-        mCount = count;
     }
 
     public class MovieAdapterViewHolder extends RecyclerView.ViewHolder implements OnClickListener {
@@ -65,6 +66,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
             mMovieReleaseDate = (TextView) view.findViewById(R.id.tv_movie_releaseDate);
             mMovieRate = (TextView) view.findViewById(R.id.tv_movie_Rate);
             mMoviePosterView = (ImageView) view.findViewById(R.id.tv_movie_poster);
+
+
             view.setOnClickListener(this);
         }
 

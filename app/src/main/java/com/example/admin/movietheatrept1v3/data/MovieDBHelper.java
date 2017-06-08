@@ -3,6 +3,8 @@ package com.example.admin.movietheatrept1v3.data;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Movie;
+
 import com.example.admin.movietheatrept1v3.data.MovieDBContract.*;
 
 // COMPLETED (1) extend the SQLiteOpenHelper class
@@ -26,12 +28,10 @@ public class MovieDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        // COMPLETED (6) Inside, create an String query called SQL_CREATE_MOVIELIST_TABLE that will create the table
-        // Create a table to hold waitlist data
         final String SQL_CREATE_MOVIELIST_TABLE = "CREATE TABLE " + MovielistEntry.TABLE_NAME + " (" +
                 MovielistEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                MovielistEntry.COLUMN_MOVIE_ID + " INTEGER NOT NULL, " +
-                MovielistEntry.COLUMN_MOVIE_FAVOURITE_TITLE + " TEXT NOT NULL, " +
+                MovielistEntry.COLUMN_MOVIE_ID + " TEXT NOT NULL, " +
+                MovielistEntry.COLUMN_MOVIE_FAVOURITE_TITLE + " TEXT NOT NULL," +
                 "); ";
 
         sqLiteDatabase.execSQL(SQL_CREATE_MOVIELIST_TABLE);
